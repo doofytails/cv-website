@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mart-Erik - Professional Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background-image: url('preview.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        /* To use your actual photo, replace the background-image URL above with your photo */
+        /* For example: background-image: url('path/to/your/photo.jpg'); */
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .name {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .bio {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            max-width: 800px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9ff, #e6f3ff);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-3px);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.25rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .experience-item {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateX(5px);
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            font-size: 1.1rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .description {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .profile-card {
+                padding: 2rem;
+            }
+            
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-card">
+            <div class="hero">
+                <div class="profile-image"></div>
+                <h1 class="name">Mart-Erik Trisberg</h1>
+                <p class="title">IT Specialist</p>
+                <p class="tagline">Building strong teams and delivering reliable IT solutions</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">About Me</h2>
+                <p class="bio">
+                    I'm a dedicated IT specialist with expertise in server administration, web technologies, and software development. Currently pursuing advanced studies in IT systems and network infrastructure, I combine theoretical knowledge with practical experience in Windows Server, Linux environments, and modern web technologies. I believe in the power of teamwork and collaborative problem-solving to deliver exceptional IT solutions that meet business needs.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Server Administration</h3>
+                        <span class="skill-tag">Windows Server</span>
+                        <span class="skill-tag">GNU/Linux</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Microsoft 365</span>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Web Technologies</h3>
+                        <span class="skill-tag">NGINX</span>
+                        <span class="skill-tag">Apache</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Scripting</span>
+                        <span class="skill-tag">Web Servers</span>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Languages</h3>
+                        <span class="skill-tag">Estonian (Native)</span>
+                        <span class="skill-tag">English (Fluent)</span>
+                        <span class="skill-tag">Technical Communication</span>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Education & Certifications</h3>
+                        <span class="skill-tag">IT Systems</span>
+                        <span class="skill-tag">Network Infrastructure</span>
+                        <span class="skill-tag">Government IT</span>
+                        <span class="skill-tag">Continuous Learning</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Experience</h2>
+                <div class="experience-item">
+                    <div class="job-title">IT Specialist</div>
+                    <div class="company">Haapsalu City Government</div>
+                    <div class="date">2021 - 2025</div>
+                    <div class="description">
+                        Managing and maintaining IT infrastructure for municipal operations. Responsible for server administration, user support, and system maintenance. Working with various government IT systems and ensuring reliable technology services for city operations.
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="job-title">Student</div>
+                    <div class="company">Tallinna Arte Gümnaasium</div>
+                    <div class="date">2012 - 2021</div>
+                    <div class="description">
+                        Completed comprehensive secondary education with focus on technology and academic excellence. Built foundational knowledge in mathematics, sciences, and computer technology that formed the basis for IT career development.
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Current Education</h2>
+                    <div class="experience-item">
+                        <div class="job-title">IT Systems and Network Infrastructure Specialist</div>
+                        <div class="company">Government IT Training Program</div>
+                        <div class="date">2024 - 2025</div>
+                        <div class="description">
+                            Advanced training in IT systems administration and network infrastructure management. Gaining specialized knowledge in government IT practices, security protocols, and modern infrastructure technologies including containerization and cloud services.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-grid">
+                    <a href="mailto:mtrisberg@gmail.com" class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>mtrisberg@gmail.com</div>
+                    </a>
+                    <a href="tel:+37256992601" class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>+372 5699 2601</div>
+                    </a>
+                    <a href="#" class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>E. Vilde Tee 88, Tallinn</div>
+                    </a>
+                    <a href="#" class="contact-item">
+                        <div class="contact-icon">🎂</div>
+                        <div>Born: 27/11/2004</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-indicator" onclick="scrollToTop()">↑</div>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scrolling for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    scrollIndicator.style.opacity = '1';
+                } else {
+                    scrollIndicator.style.opacity = '0.7';
+                }
+            });
+
+            // Add subtle animations on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.experience-item, .skill-category').forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>
